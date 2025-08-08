@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RHOG • Richard Heart’s OG Dog • PulseChain Mascot</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <meta name="description" content="RHOG — Richard Heart’s OG Dog. The PulseChain mascot with meme energy. Sniff. Snatch. Moon." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pulsePink: "#ff2da6",
+            pulseBlue: "#2ad3ff",
+            pulsePurple: "#8a2bff",
+            pulseDark: "#0b0b14"
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(138,43,255,.35), 0 0 80px rgba(42,211,255,.25)"
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* Simple noise + gradient background */
+    .bg-grid {
+      background:
+        radial-gradient(1200px 600px at 80% -10%, rgba(138,43,255,.35), transparent 60%),
+        radial-gradient(900px 500px at 0% 0%, rgba(42,211,255,.25), transparent 60%),
+        radial-gradient(700px 400px at 100% 100%, rgba(255,45,166,.2), transparent 60%),
+        #0b0b14;
+    }
+    .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: slide 18s linear infinite;
+    }
+    @keyframes slide { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
+
+    /* Video styling */
+    .hero-video {
+      object-fit: cover;
+      filter: saturate(1.15) contrast(1.05);
+    }
+
+    /* Card hover */
+    .card {
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 10px 40px rgba(42,211,255,.2), 0 10px 40px rgba(255,45,166,.15);
+      border-color: rgba(138,43,255,.5);
+    }
+
+    /* Pulse glow text */
+    .pulse-text {
+      text-shadow:
+        0 0 10px rgba(42,211,255,.6),
+        0 0 20px rgba(138,43,255,.45),
+        0 0 40px rgba(255,45,166,.35);
+    }
+
+    /* Floating emoji */
+    .float-emoji { will-change: transform; }
+  </style>
+</head>
+
+<body class="bg-grid text-white selection:bg-pulsePurple selection:text-white">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-black/30 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="RHOG logo" class="h-10 w-10 rounded-md ring-2 ring-pulseBlue/60" />
+        <span class="font-black tracking-tight text-lg sm:text-xl">RHOG</span>
+        <span class="hidden sm:inline text-white/60">Richard Heart’s OG Dog</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#lore" class="hover:text-pulseBlue">Lore</a>
+        <a href="#gang" class="hover:text-pulseBlue">RHOG Gang</a>
+        <a href="#pulse" class="hover:text-pulseBlue">PulseChain Mascot</a>
+        <a href="#token" class="hover:text-pulseBlue">Token Quick Facts</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="https://x.com/RichardHeartWin/status/1112792033528299521" target="_blank" rel="noopener"
+           class="rounded-xl bg-pulsePink hover:bg-pulsePurple px-4 py-2 font-semibold shadow-glow">
+          Watch The Origin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="absolute inset-0 -z-10 overflow-hidden">
+      <video class="hero-video w-full h-full" src="twitter.mp4" autoplay loop muted playsinline></video>
+      <div class="absolute inset-0 bg-gradient-to-t from-pulseDark via-pulseDark/20 to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-28 lg:py-32">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-6xl font-black leading-tight pulse-text">
+          RHOG • The Money-Sniffing Meme of PulseChain
+        </h1>
+        <p class="mt-5 text-lg sm:text-xl text-white/85">
+          Born from a real tweet by Richard Heart, forged by crypto chaos. RHOG spots the bag, snatches the bag, keeps the bag.
+        </p>
+
+        <div class="mt-7 flex flex-wrap items-center gap-3">
+          <a href="#token" class="rounded-xl bg-pulseBlue/20 hover:bg-pulseBlue/30 border border-pulseBlue/40 px-4 py-2">
+            View Token Quick Facts
+          </a>
+          <a href="https://x.com/RichardHeartWin/status/1112792033528299521" target="_blank" rel="noopener"
+             class="rounded-xl bg-pulsePink hover:bg-pulsePurple px-4 py-2 font-semibold shadow-glow">
+            Open RH Post on X
+          </a>
+        </div>
+
+        <div class="marquee mt-8 text-pulseBlue/90 font-semibold">
+          <span>Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating emojis for meme juice -->
+    <div class="pointer-events-none absolute inset-0 -z-0">
+      <div class="float-emoji absolute left-[5%] top-[20%] text-4xl">💸</div>
+      <div class="float-emoji absolute right-[10%] top-[30%] text-4xl">🐶</div>
+      <div class="float-emoji absolute left-[12%] bottom-[15%] text-4xl">🧠</div>
+      <div class="float-emoji absolute right-[18%] bottom-[20%] text-4xl">🚀</div>
+    </div>
+  </section>
+
+  <!-- Lore -->
+  <section id="lore" class="relative py-16 sm:py-24">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <div class="card border border-white/10 rounded-2xl p-6 bg-white/5">
+          <h2 class="text-3xl sm:text-4xl font-black mb-4">The Lore</h2>
+          <p class="text-white/90 leading-relaxed">
+            It started with a post. Richard Heart shared a short clip of a small brown dog fearlessly snatching cash from a bag.
+            One bold move, full of personality. That energy became RHOG, Richard Heart’s OG Dog. RHOG is not a random pup.
+            He smells opportunities before the crowd, jumps first, and never drops the bag. In memecoins, he is the original gangster with a nose for dollars and a pulse for hype.
+          </p>
+          <ul class="mt-6 space-y-3 text-white/90">
+            <li>• <b>Origin</b>: the real tweet from RH</li>
+            <li>• <b>Mission</b>: steal the top ranks on PulseChain</li>
+            <li>• <b>Symbol</b>: dollar bills in mouth, confident eyes</li>
+            <li>• <b>Mantra</b>: Sniff. Snatch. Moon.</li>
+          </ul>
+          <div class="mt-6 flex gap-3">
+            <a href="https://x.com/RichardHeartWin/status/1112792033528299521" target="_blank" rel="noopener"
+               class="rounded-lg border border-pulseBlue/50 bg-pulseBlue/15 hover:bg-pulseBlue/25 px-4 py-2">
+              View The Tweet
+            </a>
+            <a href="#pulse" class="rounded-lg border border-pulsePink/50 bg-pulsePink/15 hover:bg-pulsePink/25 px-4 py-2">
+              PulseChain Identity
+            </a>
+          </div>
+        </div>
+
+        <div class="card border border-white/10 rounded-2xl p-4 bg-white/5">
+          <img src="logo.png" class="w-full rounded-xl" alt="RHOG emblem" />
+          <p class="text-sm text-white/70 px-2 mt-3">
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PulseChain Mascot -->
+  <section id="pulse" class="py-16 sm:py-24 bg-gradient-to-b from-transparent via-black/20 to-black/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-black mb-6">Mascot of PulseChain</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="card border border-white/10 rounded-2xl p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Visual Language</h3>
+          <p class="text-white/85">
+            RHOG wears PulseChain colors. Pink for attitude, purple for dominance, blue for speed. The collar tag carries the Pulse mark with pride.
+          </p>
+        </div>
+        <div class="card border border-white/10 rounded-2xl p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Brand Energy</h3>
+          <p class="text-white/85">
+            Street-smart. Meme-native. Money-focused. RHOG is the spirit animal for builders and degens who move first.
+          </p>
+        </div>
+        <div class="card border border-white/10 rounded-2xl p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Community Signal</h3>
+          <p class="text-white/85">
+            Holders rally under one banner. Post the dog, post the bills, post the moon. The meme is the message.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RHOG Gang Gallery -->
+  <section id="gang" class="py-16 sm:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between mb-6">
+        <h2 class="text-3xl sm:text-4xl font-black">The RHOG Gang</h2>
+        <span class="text-white/60 text-sm">Frames, vibes, and variants</span>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <img src="1.png" alt="RHOG style 1" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="2.png" alt="RHOG style 2" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="3.png" alt="RHOG style 3" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="4.png" alt="RHOG style 4" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="5.png" alt="RHOG style 5" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="6.png" alt="RHOG style 6" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="7.png" alt="RHOG style 7" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+        <img src="8.png" alt="RHOG style 8" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
+      </div>
+
+      <p class="mt-6 text-white/80 text-sm">
+      </p>
+    </div>
+  </section>
+
+  <!-- Token quick facts -->
+  <section id="token" class="py-16 sm:py-24 bg-black/40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl sm:text-4xl font-black mb-8">Token Quick Facts</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="card rounded-2xl border border-white/10 p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Ticker</h3>
+          <p class="text-2xl font-black text-pulseBlue">RHOG</p>
+          <p class="text-white/80 mt-2">Richard Heart’s OG Dog</p>
+        </div>
+        <div class="card rounded-2xl border border-white/10 p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Mantra</h3>
+          <p class="text-white/90">Sniff. Snatch. Moon.</p>
+        </div>
+        <div class="card rounded-2xl border border-white/10 p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Chain</h3>
+          <p class="text-white/90">PulseChain</p>
+        </div>
+        <div class="card rounded-2xl border border-white/10 p-6 bg-white/5">
+          <h3 class="font-bold text-xl mb-2">Origin Link</h3>
+          <a class="text-pulseBlue underline break-all"
+             href="https://x.com/RichardHeartWin/status/1112792033528299521" target="_blank" rel="noopener">
+            https://x.com/RichardHeartWin/status/1112792033528299521
+          </a>
+        </div>
+      </div>
+      <p class="text-xs text-white/60 mt-6">
+        Community project inspired by a real post. No promises. Pure meme. Pure fun.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 sm:py-24">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl sm:text-4xl font-black mb-4">Ready to roll with the OG Dog</h2>
+      <p class="text-white/85 max-w-3xl mx-auto">
+        Drop the dog. Post the bills. Tag the moon. RHOG is your signal that PulseChain memes are alive and hungry.
+      </p>
+      <div class="mt-7 flex items-center justify-center gap-3">
+        <a href="#gang" class="rounded-xl bg-pulseBlue/20 hover:bg-pulseBlue/30 border border-pulseBlue/40 px-5 py-3">
+          Explore The Gang
+        </a>
+        <a href="https://x.com/RichardHeartWin/status/1112792033528299521" target="_blank" rel="noopener"
+           class="rounded-xl bg-pulsePink hover:bg-pulsePurple px-5 py-3 font-semibold shadow-glow">
+          Watch The Origin Again
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-10 text-center text-white/70">
+    <div class="max-w-6xl mx-auto px-4">
+      <p>RHOG • Richard Heart’s OG Dog</p>
+      <p class="text-xs mt-2">All memes belong to the chain. Community driven. No team, no roadmap, only dog.</p>
+    </div>
+  </footer>
+
+  <!-- Interactions -->
+  <script>
+    // Tiny float animation for emojis
+    gsap.utils.toArray(".float-emoji").forEach((el, i) => {
+      gsap.to(el, {
+        y: 12,
+        duration: 2 + i * .3,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+      gsap.to(el, {
+        x: i % 2 ? 8 : -8,
+        duration: 3 + i * .2,
+        yoyo: true,
+        repeat: -1,
+        ease: "sine.inOut"
+      });
+    });
+
+    // Scroll reveals
+    gsap.utils.toArray(".card").forEach((card) => {
+      gsap.from(card, {
+        opacity: 0,
+        y: 24,
+        duration: .6,
+        ease: "power2.out",
+        scrollTrigger: { trigger: card, start: "top 85%" }
+      });
+    });
+
+    // Pulse text shimmer
+    gsap.fromTo(".pulse-text",
+      { filter: "brightness(1)" },
+      { filter: "brightness(1.25)", duration: 1.8, repeat: -1, yoyo: true, ease: "sine.inOut" });
+
+    // Safe autoplay on iOS
+    const v = document.querySelector(".hero-video");
+    if (v) {
+      const tryPlay = () => v.play().catch(()=>{});
+      document.addEventListener("visibilitychange", tryPlay, { once: true });
+      window.addEventListener("load", tryPlay, { once: true });
+      v.addEventListener("loadeddata", tryPlay, { once: true });
+    }
+  </script>
+</body>
+</html>
+
