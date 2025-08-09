@@ -32,53 +32,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* Simple noise + gradient background */
-    .bg-grid {
+    .bg-grid{
       background:
         radial-gradient(1200px 600px at 80% -10%, rgba(138,43,255,.35), transparent 60%),
         radial-gradient(900px 500px at 0% 0%, rgba(42,211,255,.25), transparent 60%),
         radial-gradient(700px 400px at 100% 100%, rgba(255,45,166,.2), transparent 60%),
         #0b0b14;
     }
-    .marquee {
-      white-space: nowrap;
-      overflow: hidden;
-      position: relative;
-      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    }
-    .marquee span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: slide 18s linear infinite;
-    }
-    @keyframes slide { 0%{transform:translateX(0)} 100%{transform:translateX(-100%)} }
-
-    /* Video styling */
-    .hero-video {
-      object-fit: cover;
-      filter: saturate(1.15) contrast(1.05);
-    }
-
-    /* Card hover */
-    .card {
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 10px 40px rgba(42,211,255,.2), 0 10px 40px rgba(255,45,166,.15);
-      border-color: rgba(138,43,255,.5);
-    }
-
-    /* Pulse glow text */
-    .pulse-text {
-      text-shadow:
-        0 0 10px rgba(42,211,255,.6),
-        0 0 20px rgba(138,43,255,.45),
-        0 0 40px rgba(255,45,166,.35);
-    }
-
-    /* Floating emoji */
-    .float-emoji { will-change: transform; }
+    .marquee{white-space:nowrap;overflow:hidden;position:relative;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent)}
+    .marquee span{display:inline-block;padding-left:100%;animation:slide 18s linear infinite}
+    @keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    .hero-video{object-fit:cover;filter:saturate(1.15) contrast(1.05)}
+    .card{transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease}
+    .card:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 10px 40px rgba(42,211,255,.2),0 10px 40px rgba(255,45,166,.15);border-color:rgba(138,43,255,.5)}
+    .pulse-text{text-shadow:0 0 10px rgba(42,211,255,.6),0 0 20px rgba(138,43,255,.45),0 0 40px rgba(255,45,166,.35)}
   </style>
 </head>
 
@@ -130,20 +97,17 @@
              class="rounded-xl bg-pulsePink hover:bg-pulsePurple px-4 py-2 font-semibold shadow-glow">
             Open RH Post on X
           </a>
+          <!-- Project Twitter button -->
+          <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener"
+             class="rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 px-4 py-2 font-semibold">
+            Project Twitter
+          </a>
         </div>
 
         <div class="marquee mt-8 text-pulseBlue/90 font-semibold">
           <span>Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • Sniff. Snatch. Moon. • </span>
         </div>
       </div>
-    </div>
-
-    <!-- Floating emojis for meme juice -->
-    <div class="pointer-events-none absolute inset-0 -z-0">
-      <div class="float-emoji absolute left-[5%] top-[20%] text-4xl">💸</div>
-      <div class="float-emoji absolute right-[10%] top-[30%] text-4xl">🐶</div>
-      <div class="float-emoji absolute left-[12%] bottom-[15%] text-4xl">🧠</div>
-      <div class="float-emoji absolute right-[18%] bottom-[20%] text-4xl">🚀</div>
     </div>
   </section>
 
@@ -177,8 +141,7 @@
 
         <div class="card border border-white/10 rounded-2xl p-4 bg-white/5">
           <img src="logo.png" class="w-full rounded-xl" alt="RHOG emblem" />
-          <p class="text-sm text-white/70 px-2 mt-3">
-          </p>
+          <p class="text-sm text-white/70 px-2 mt-3"></p>
         </div>
       </div>
     </div>
@@ -229,9 +192,6 @@
         <img src="7.png" alt="RHOG style 7" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
         <img src="8.png" alt="RHOG style 8" class="card rounded-xl border border-white/10 bg-white/5 w-full h-64 object-cover" />
       </div>
-
-      <p class="mt-6 text-white/80 text-sm">
-      </p>
     </div>
   </section>
 
@@ -296,24 +256,6 @@
 
   <!-- Interactions -->
   <script>
-    // Tiny float animation for emojis
-    gsap.utils.toArray(".float-emoji").forEach((el, i) => {
-      gsap.to(el, {
-        y: 12,
-        duration: 2 + i * .3,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut"
-      });
-      gsap.to(el, {
-        x: i % 2 ? 8 : -8,
-        duration: 3 + i * .2,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut"
-      });
-    });
-
     // Scroll reveals
     gsap.utils.toArray(".card").forEach((card) => {
       gsap.from(card, {
